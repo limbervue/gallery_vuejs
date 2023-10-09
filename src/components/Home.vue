@@ -13,7 +13,7 @@
     <AsideMenu :show-aside-menu="isAsideOpen" />
     <main class="main-content">
       <div class="logo" v-show="$route.name=='root'">
-        <img src="../assets/images/mod-art.jpeg" >
+        <img src="@/assets/images/mod-art.jpeg" >
       </div>
       <router-view />
     </main>
