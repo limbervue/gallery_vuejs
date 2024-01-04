@@ -1,13 +1,26 @@
 <script setup>
     import Header from '../components/Header.vue'
     import AsideMenu from '../components/AsideMenu.vue'
-    import { ref } from 'vue';
+    import { ref,onMounted } from 'vue';
+
+    const max950 = ref(window.innerWidth > 766);
+    const min950 = ref(window.innerWidth < 766);
+    
+    const handleResize = () => {
+        max950.value = window.innerWidth > 766;
+        min950.value = window.innerWidth < 766;
+    };
+
+    onMounted(() => {
+        window.addEventListener('resize', handleResize); 
+    });
 
     let isAsideOpen = ref(false);
 </script>
 
 <template>
-    <Header @toggle-aside="isAsideOpen = !isAsideOpen" />
+    <Header v-if="max950"  @toggle-aside="isAsideOpen = !isAsideOpen" />
+    <HeaderMobile v-if="min950" />
     <AsideMenu :show-aside-menu="isAsideOpen" />
     <div class="content">
       <div class="content-history">
@@ -36,10 +49,54 @@
       width: 40%;
       opacity: 0.7;
       border-radius: 5%;
+      
     }
+    
     .content {
-        padding-top: 100px;
-      text-align: center;
+        padding-top: 183px;
+        text-align: center;
+        padding-bottom: 170px;
+        width: 70%;
+        margin: auto;
     }
+    .content-history{
+        padding-bottom: 30px;
+    }
+
+    @media (max-width: 1340px) {
+        .centered-text{
+            width: 70%;
+        }
+        
+        .img-roca img{
+            width: 60%;
+        }
+    }
+
+    @media (max-width: 766px) {
+
+        .centered-text{
+            width: 70%;
+        }
+        .content{
+            padding-top: 94px;
+        }
+    }
+
+    @media (max-width: 484px) {
+        
+        .centered-text{
+            width: 90%;
+        }
+
+        .img-roca img{
+            width: 90%;
+        }
+        .content{
+            padding-top: 70px;
+        }
+    }
+    
+    
   </style>
     

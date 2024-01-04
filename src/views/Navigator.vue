@@ -9,8 +9,9 @@ import { useRoute } from 'vue-router';
 import About from '../components/About.vue';
 import Contact from '../components/Contact.vue';
 const route = useRoute();
+
 const showAbout = computed(()=>{
-    return route.params.category == 'about'; // si es true, mostramos About, si no, Contact
+    return route.params.page == "profile"; 
 });
 </script>
 

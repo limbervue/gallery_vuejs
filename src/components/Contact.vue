@@ -1,13 +1,26 @@
 <script setup>
     import Header from '../components/Header.vue'
     import AsideMenu from '../components/AsideMenu.vue'
-    import { ref } from 'vue';
+    import { ref,onMounted } from 'vue';
+
+    const max950 = ref(window.innerWidth > 766);
+    const min950 = ref(window.innerWidth < 766);
+    
+    const handleResize = () => {
+        max950.value = window.innerWidth > 766;
+        min950.value = window.innerWidth < 766;
+    };
+
+    onMounted(() => {
+        window.addEventListener('resize', handleResize); 
+    });
 
     let isAsideOpen = ref(false);
 </script>
 
 <template>
-    <Header @toggle-aside="isAsideOpen = !isAsideOpen" />
+    <Header v-if="max950"  @toggle-aside="isAsideOpen = !isAsideOpen" />
+    <HeaderMobile v-if="min950" />
     <AsideMenu :show-aside-menu="isAsideOpen" />
     <div class="container">
         <section class="global">
@@ -42,10 +55,11 @@
         text-align: justify;
         float: none;
         margin-right: 40px;
-        margin-left: 25px;
+        margin-left: 45px;
         display: flex;
         padding-bottom: 100px;
         padding-top: 100px;
+        
     }
     /*///////////////////////////TITULO*/
     
@@ -72,5 +86,16 @@
     }
     .imagenes{
         text-align: center;
+    }
+    
+    .global{
+        max-width: 100%;
+        width: 100%;
+    }
+
+    @media (max-width: 1890px) {
+        .imagenes{
+            margin-top: -280px;
+        }
     }
 </style>

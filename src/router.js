@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router"
 import Home from "./components/Home.vue"
 import GalleryViewer from "./views/GalleryViewer.vue";
 import Navigator from "./views/Navigator.vue";
+import Compras from "./views/Compras.vue";
 const routes = [
 	{
 		path: "/",
@@ -10,19 +11,22 @@ const routes = [
 		
 		children:[
 			{
-				path:'/:category',
+				path:'/:page',
 				component: Navigator
 			},
 			{
 				path:'/gallery/:category',
-				name:"gallery",
 				component: GalleryViewer,
 			},
+			{
+				path:'/gallery/:category/:id',
+				component: Compras
+			}
 			
 		]
 	},
 ];
-let router = createRouter({
+const router = createRouter({
     history: createWebHashHistory(),
     routes
 });

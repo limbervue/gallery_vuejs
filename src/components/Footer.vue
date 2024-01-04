@@ -18,11 +18,15 @@
 </template>
 
 <style lang="scss" scoped>
+    
     .footer{
         background:#000;
         padding:30px 0px;
         font-family: 'Play', sans-serif;
         text-align:center;
+        width: 100%;
+        position: absolute;
+        left: 0;
     }
 
     .footer .row{
@@ -71,4 +75,5 @@
             margin:0% 3%;
         }
     }
+    
 </style>

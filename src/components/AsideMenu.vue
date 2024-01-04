@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue';
 
 defineProps({
     showAsideMenu: Boolean
@@ -15,7 +14,7 @@ defineProps({
                 <li class="aside-menu__items__item">Home</li>
             </router-link>
             
-            <router-link to="/about">
+            <router-link to="/profile">
                 <li class="aside-menu__items__item">Historia</li>
             </router-link>
             
@@ -35,7 +34,7 @@ defineProps({
     top: 0;
     left: -200px;
     height: 100svh;
-    background-color: rgb(24, 82, 81);;
+    background-color: rgb(24, 82, 81);
     width: 200px;
     transition: all 0.3s;
     padding-top: 10px;
