@@ -201,9 +201,7 @@ const inner = ref(false)
             margin: 20px;
             width: 199px;
         }
-        .gallery-container{
-            height: 100vh;
-        }
+        
     }
     @media (max-width: 796px) {
         .images img{
@@ -223,6 +221,9 @@ const inner = ref(false)
         .images img{
             margin: 13px;
             width: 125px;
+        }
+        .gallery-container{
+            min-height: 100vh;
         }
     }
     @media (max-width: 532px) {

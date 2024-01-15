@@ -86,7 +86,6 @@
         }
         .content{
             padding-top: 284px;
-            height: 100vh;
         }
     }
 
