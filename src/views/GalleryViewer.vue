@@ -245,6 +245,14 @@ const inner = ref(false)
             margin: 6px;
             width: 96px;
         }
+        .enlarged__image {
+            
+            width: 90%; /* Controla el tamaño de la imagen ampliada */
+            cursor: pointer; 
+            border-radius: 20px;
+            position: relative;
+            top: -108px;
+        }
     }
     @media (max-width: 403px) {
         .images img{
