@@ -1,6 +1,10 @@
 <script setup>
     import categoryTitle from '../data/category_titles.json';
+    import { useRouter } from 'vue-router';
+
+    const route = useRouter();
     import { ref } from 'vue';
+
     const showDropdown1 = ref(false)
     const showDropdown2 = ref(false)
 
@@ -10,7 +14,14 @@
     function toggleDropdown2() {
         showDropdown2.value = !showDropdown2.value
     }
-    
+    function handleNavigation(routeName){
+
+        showDropdown1.value = false;
+        showDropdown2.value = false;
+        route.push({path: routeName});
+    }
+
+   
 </script>
 
 <template>
@@ -30,18 +41,15 @@
                 <nav v-if="showDropdown1" class="menu1">
                 
                     
-                    <ul>           
-                        <router-link to="/">
-                            <li class="nav__items__item">HOME</li>
-                        </router-link>
-
-                        <router-link to="/profile">
-                            <li class="nav__items__item">HISTORIA</li>
-                        </router-link
-                        >
-                        <router-link to="/contact">
-                            <li class="nav__items__item">CONTACTO</li>
-                        </router-link>
+                    <ul>   
+                                
+                        <li @click="handleNavigation('/')" class="nav__items__item">HOME</li>
+                    
+                        <li @click="handleNavigation('/profile')" class="nav__items__item">HISTORIA</li>
+                    
+                        <li @click="handleNavigation('/contact')" class="nav__items__item">CONTACTO</li>
+                       
+                        
                     </ul>
                 </nav>
 
@@ -52,27 +60,19 @@
             <!-- Dropdown -->
                 <nav v-if="showDropdown2" class="menu2">
                 
-                    <ul>           
-                        <router-link to="/gallery/personales">
-                            <li class="nav__items__item">Personales</li>
-                        </router-link>
+                    <ul>
+
+                        <li @click="handleNavigation('/gallery/personales')" class="nav__items__item">Personales</li>
+                    
+                        <li @click="handleNavigation('/gallery/pareja')" class="nav__items__item">Parejas</li>
+                    
+                        <li @click="handleNavigation('/gallery/familiares')" class="nav__items__item">Familiares</li>
+                    
+                        <li @click="handleNavigation('/gallery/perros')" class="nav__items__item">Perros</li>
+                    
+                        <li  @click="handleNavigation('/gallery/aves')" class="nav__items__item">Aves</li>
                         
-                        <router-link to="/gallery/pareja">
-                            <li class="nav__items__item">Parejas</li>
-                        </router-link>
-
-                        <router-link to="/gallery/familiares">
-                            <li class="nav__items__item">Familiares</li>
-                        </router-link>
-
-                        <router-link to="/gallery/perros">
-                            <li class="nav__items__item">Perros</li>
-                        </router-link>
-
-                        <router-link to="/gallery/aves">
-                            <li class="nav__items__item">Aves</li>
-                        </router-link>
-                            
+                        
                     </ul>
                 </nav>
             </div>

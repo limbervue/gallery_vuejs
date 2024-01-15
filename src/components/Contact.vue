@@ -29,7 +29,7 @@
                 
                 <br>
                 <div class="imagenes">
-                    <div class="content_img">
+                    <div class="content_img img_whats">
                         <img src="../../public/images/whatsapp.png">
                         <p><a href="https://wa.me/c/593961203563" target="_blank">0961203563</a></p>
                     </div>
@@ -58,7 +58,6 @@
         margin-left: 45px;
         display: flex;
         padding-bottom: 100px;
-        padding-top: 100px;
         
     }
     /*///////////////////////////TITULO*/
@@ -97,5 +96,35 @@
         .imagenes{
             margin-top: -280px;
         }
+        .container{
+            padding-top: 264px;
+            height: 100vh;
+        }
     }
+
+
+    @media (max-width: 766px) {
+        
+        .container{
+            padding-top: 694px;
+        }
+
+    }
+
+    @media (max-width: 509px) {
+        
+        .img_insta{
+            position: relative;
+            top: -197px;
+        }
+        .img_whats{
+            position: relative;
+            top: -176px;
+        }
+        .imagenes img{
+            width: 50px;
+        }
+
+    }
+
 </style>

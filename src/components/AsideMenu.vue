@@ -1,26 +1,34 @@
 <script setup>
+import { useRouter } from 'vue-router';
+import { defineProps } from 'vue';
 
-defineProps({
+const route = useRouter();
+
+const emits =  defineEmits(["close-aside"])
+
+const props =  defineProps({
     showAsideMenu: Boolean
 })
+function handleNavigation(routeName){
+
+    emits('close-aside');
+    route.push({path: routeName});
+}
+
 
 </script>
-
+    
 
 <template>
     <aside class="aside-menu" :class="{'--show': showAsideMenu}">
         <ul class="aside-menu__items">
-            <router-link to="/">
-                <li class="aside-menu__items__item">Home</li>
-            </router-link>
             
-            <router-link to="/profile">
-                <li class="aside-menu__items__item">Historia</li>
-            </router-link>
+                <li @click="handleNavigation('/')" class="aside-menu__items__item">Home</li>
+           
+                <li @click="handleNavigation('/profile')" class="aside-menu__items__item">Historia</li>
             
-            <router-link to="/contact">
-                <li class="aside-menu__items__item">Contacto</li>
-            </router-link>
+                <li @click="handleNavigation('/contact')" class="aside-menu__items__item">Contacto</li>
+    
             
         </ul>
     </aside>

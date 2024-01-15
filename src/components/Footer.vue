@@ -76,4 +76,11 @@
         }
     }
     
+    @media (max-width: 766px) {
+        .footer{
+           padding-top: 40px;
+        }
+    }
+    
+
 </style>

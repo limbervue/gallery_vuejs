@@ -36,6 +36,7 @@
   </template>
   
   <style scoped>
+  
     .centered-text {
       
       color: white;
@@ -53,11 +54,11 @@
     }
     
     .content {
-        padding-top: 183px;
         text-align: center;
         padding-bottom: 170px;
         width: 70%;
-        margin: auto;
+        margin: -70px auto 0;
+        
     }
     .content-history{
         padding-bottom: 30px;
@@ -72,14 +73,26 @@
             width: 60%;
         }
     }
+    @media (max-width: 1179px) {
+        .centered-text{
+            width: 80%;
+        } 
+    }
 
     @media (max-width: 766px) {
 
         .centered-text{
-            width: 70%;
+            width: 90%;
         }
         .content{
-            padding-top: 94px;
+            padding-top: 284px;
+            height: 100vh;
+        }
+    }
+
+    @media (max-width: 647px) {
+        .img-roca img{
+            width: 85%;
         }
     }
 
@@ -93,10 +106,15 @@
             width: 90%;
         }
         .content{
-            padding-top: 70px;
+            padding-top: 217px;
         }
     }
-    
+
+    @media (max-width: 388px) {
+        .content{
+            height: 100%;
+        }
+    }
     
   </style>
     

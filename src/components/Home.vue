@@ -1,9 +1,10 @@
 <script setup>
-    import { ref, onMounted} from 'vue';
+    import { ref, onMounted, } from 'vue';
     import Header from "../components/Header.vue";
     import HeaderMobile from "../components/HeaderMobile.vue";
     import AsideMenu from "../components/AsideMenu.vue";
     import Footer from './Footer.vue';
+
 
     const max950 = ref(window.innerWidth > 766);
     const min950 = ref(window.innerWidth <= 766);
@@ -16,16 +17,18 @@
     onMounted(() => {
         window.addEventListener('resize', handleResize); // Agregar el listener al cargar el componente
     });
-  let isAsideOpen = ref(false);
-  console.log( import.meta.env.BASE_URL);
-  
+    let isAsideOpen = ref(false);
+    
+    console.log( import.meta.env.BASE_URL);
+    
+
 </script>
 
 <template>
     <Header v-if="max950" @toggle-aside="isAsideOpen = !isAsideOpen"/>
     <HeaderMobile v-if="min950" />
 
-    <AsideMenu :show-aside-menu="isAsideOpen" />
+    <AsideMenu @close-aside="isAsideOpen = false" :show-aside-menu="isAsideOpen" />
     <main class="main-content">
       <div class="logo" v-show="$route.name=='root'">
         <img src="@/assets/images/mod-art.jpeg" >
@@ -35,7 +38,7 @@
     <Footer/>
 </template>
   
-<style >
+<style setup>
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
 	*{
@@ -48,8 +51,11 @@
   #app{
     padding: 0;
     width: 100%;
+    max-width: 100%;
+    
   }
   
+
   body{
 		background-color: rgb(9, 55, 54);
 		background-repeat: no-repeat;
@@ -63,54 +69,45 @@
     .logo img{
         border-radius: 50%;
         width: 800px;
+        margin:  0 auto;
     }
     .logo{
-        padding-top: 70px;
+        
         text-align: center;
         opacity: 0.4;
         
     }
 
-    .main-content{
-      margin-top: 64px;
-     
-    }
+    @media (max-width: 1908px) {
+        .logo{
+            position: relative;
+            height: 100vh;
+        }
 
+    }
 
     @media (max-width: 1880px) {
         .logo{
             position: relative;
-            top: -140px;
-            left: -43px;
+            
         }
+
     }
 
     @media (max-width: 766px) {
+        .logo {
+            margin-top: 200px;
+            
+        }
+        
+    }    
+
+    @media (max-width: 738px) {
+
         .logo img{
-          width: 110%;
+            max-width: 100%;
         }
-
+        
     }    
-
-    @media (max-width: 568px) {
-
-        .logo{
-            top: -217px;
-        }
-    }    
-
-    @media (max-width: 514px) {
-
-        .logo{
-            left: -26px;
-        }
-    }    
-
-    @media (max-width: 396px) {
-
-        .logo{
-            top: 40px;
-        }
-    }  
 
 </style>
