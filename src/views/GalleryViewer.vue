@@ -63,7 +63,7 @@ const inner = ref(false)
                 <!-- <div class="image" > -->
                     <li v-for="img in gallery.imagesBn" :key="img.id" @mouseover="showButton(img.id)" @mouseleave="hideButton(img.id)">
 
-                        <img :src="`/images/${img.pictureName}`" @click="handleImageClick(img)">
+                        <img :src="`images/${img.pictureName}`" @click="handleImageClick(img)">
 
                         <div class="btn" v-if="hovered === img.id">
 
@@ -84,11 +84,11 @@ const inner = ref(false)
                 <!-- <div class="images__color"> -->
                     <li v-for="img in gallery.imagesColor" :key="img.id" @mouseover="showButton(img.id)" @mouseleave="hideButton(img.id)">
 
-                        <img :src="`/images/${img.pictureName}`" @click="handleImageClick(img)">
+                        <img :src="`images/${img.pictureName}`" @click="handleImageClick(img)">
 
                         <div class="btn" v-if="hovered === img.id">
 
-                            <router-link :to="`/gallery/${route.params.category}/${img.id}`">
+                            <router-link :to="`gallery/${route.params.category}/${img.id}`">
                                 <button>
                                     comprar
                                 </button>
