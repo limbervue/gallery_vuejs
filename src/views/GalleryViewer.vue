@@ -13,6 +13,7 @@ let hovered = ref(null);
 
 
 onUpdated(()=>{
+    
     init();
     if(window.innerWidth > 766){
     inner.value = true

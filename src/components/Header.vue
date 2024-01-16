@@ -72,6 +72,13 @@
 
 
 <style lang="scss" scoped>
+    .content-header img{
+        position: absolute;
+        width: 150px;
+        top: 2px;
+        right: 680px;
+        opacity: 0.4;
+    }
     header{
         height: 170px;
     }
@@ -81,8 +88,8 @@
         top: 0;
         width:100%;
         padding-right:  40px;
-        background-color: rgb(9, 55, 54);
-        border-bottom: 4px solid rgb(105, 134, 133);
+        background-color: rgb(24, 82, 81);;
+        border-bottom: 4px solid rgb(115, 205, 198);
         padding-bottom: 10px;
         left: 0;
         &__title{
@@ -90,6 +97,8 @@
             margin-top: 30px;
             margin-bottom: 20px;
             margin-right: -20px;
+            color: white;
+            text-shadow: 1px 1px 2px black;
         }
         &__items{
             display: flex;
@@ -103,8 +112,9 @@
                 padding: 10px;
                 border-radius: 0.4rem;
                 transition: all 0.5s;
-                color: #fff;
+                color: white;
                 font-size: 18px;
+                text-shadow: 1px 1px 2px black;
                 .aside-menu-toggle{
                 
                     width:25px;
@@ -112,7 +122,7 @@
                 }
                 &:hover{
                     cursor: pointer;
-                    background-color: rgb(10, 31, 31);
+                    background-color: rgb(27, 144, 142);
                 }
             }
         }
