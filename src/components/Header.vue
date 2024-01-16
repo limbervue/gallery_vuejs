@@ -79,6 +79,9 @@
         right: 680px;
         opacity: 0.4;
     }
+    h1{
+        color: white;
+    }
     header{
         height: 170px;
     }

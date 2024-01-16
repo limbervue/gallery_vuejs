@@ -145,6 +145,7 @@
         height: 582px;
         margin: 0 auto;
         font-size: 28px;
+        color: white;
         position: relative;
         top: -72px;
     }
