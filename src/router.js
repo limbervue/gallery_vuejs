@@ -11,7 +11,7 @@ const routes = [
 		
 		children:[
 			{
-				path:'/:page',
+				path:'/:category',
 				component: Navigator
 			},
 			{

@@ -4,34 +4,15 @@
     import HeaderMobile from "../components/HeaderMobile.vue";
     import AsideMenu from "../components/AsideMenu.vue";
     import Footer from './Footer.vue';
-
-    import CatalogoFotos from '../data/gallery_data';
     import { useRoute } from 'vue-router';
 
     const route = useRoute();
-    const personales = ref([]);
-    const parejas = ref([]);
-    const familiares = ref([]);
-    const perros = ref([]);
-    const aves = ref([]);
-
-    const enlargedImage = ref(null);
-
-    let hovered = ref(null);
 
     const max950 = ref(window.innerWidth > 766);
     const min950 = ref(window.innerWidth <= 766);
 
-    const home = ref(false);
     
     onUpdated(()=>{
-        
-            
-        if(route.name == "root"){
-            home.value = true;
-        }
-        
-        init();
         
         if(window.innerWidth > 766){
         inner.value = true
@@ -40,48 +21,18 @@
         }    
 
     });
-
-
-    function init(){
-        personales.value = CatalogoFotos.personales;
-        parejas.value = CatalogoFotos.pareja
-        familiares.value = CatalogoFotos.familiares
-        perros.value = CatalogoFotos.perros
-        aves.value = CatalogoFotos.aves
-        
-    }
-    init();
-
-    function handleImageClick(img) {
-        enlargedImage.value = img;
-    }
-
-    function closeEnlargedImage() {
-        enlargedImage.value = null;
-    }
-
-    function showButton(id){
-        hovered.value = id
-    }
-
-    function hideButton(){
-        hovered.value = null
-    }
     const inner = ref(false)
-    // Función para actualizar el valor de width852 cuando cambia el tamaño de la ventana
+    
     const handleResize = () => {
         max950.value = window.innerWidth > 766;
         min950.value = window.innerWidth <= 766;
     };
 
     onMounted(() => {
-        window.addEventListener('resize', handleResize); // Agregar el listener al cargar el componente
+        window.addEventListener('resize', handleResize); 
     });
     let isAsideOpen = ref(false);
     
-    console.log( import.meta.env.BASE_URL);
-    
-
 
 </script>
 
@@ -91,10 +42,6 @@
 
     <AsideMenu @close-aside="isAsideOpen = false" :show-aside-menu="isAsideOpen" />
     <main class="main-content">
-        <div v-if="enlargedImage" class="enlarged__image__background" @click="closeEnlargedImage">
-            <span class="span">X</span>
-            <img :src="`images/${enlargedImage.pictureName}`" class="enlarged__image" @click.stop>
-        </div>
 
         <section v-if="route.name == 'root'" class="container">
             <article class="welcome" >
@@ -111,23 +58,24 @@
   
 <style lang="scss" setup>
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
-	*{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		font-family: 'Montserrat Alternates', sans-serif;
-	}
+    @import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat Alternates', sans-serif;
+        }
   
-  #app{
-    padding: 0;
-    width: 100%;
-    max-width: 100%;
-    
-  }
+    #app{
+        padding: 0;
+        max-width: 100%;
+        text-align: center;
+    }
   
-
-  body{
+    a{
+        text-decoration: none;
+    }
+    body{
 		background: url("/fondo_pagina.jpeg");
 		background-repeat: no-repeat;
 		opacity: 0.9;

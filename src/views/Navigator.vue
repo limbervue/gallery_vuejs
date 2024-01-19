@@ -11,7 +11,7 @@
     const route = useRoute();
 
     const showAbout = computed(()=>{
-        return route.params.page == "profile"; 
+        return route.params.category == "profile"; 
         
     });
 </script>

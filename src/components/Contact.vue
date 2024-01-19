@@ -1,6 +1,7 @@
 <script setup>
     import Header from '../components/Header.vue'
     import AsideMenu from '../components/AsideMenu.vue'
+    import HeaderMobile from './HeaderMobile.vue';
     import { ref,onMounted } from 'vue';
 
     const max950 = ref(window.innerWidth > 766);
@@ -21,7 +22,7 @@
 <template>
     <Header v-if="max950"  @toggle-aside="isAsideOpen = !isAsideOpen" />
     <HeaderMobile v-if="min950" />
-    <AsideMenu :show-aside-menu="isAsideOpen" />
+    <AsideMenu   @close-aside="isAsideOpen = false" :show-aside-menu="isAsideOpen" />
     <div class="container">
         <section class="global">
             
@@ -127,4 +128,9 @@
 
     }
 
+    @media (max-width: 395px) {
+        .container{
+            height: 100%;
+        }
+    }
 </style>

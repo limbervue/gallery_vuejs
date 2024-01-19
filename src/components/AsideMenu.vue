@@ -1,10 +1,10 @@
 <script setup>
 import { useRouter } from 'vue-router';
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 
 const route = useRouter();
 
-const emits =  defineEmits(["close-aside"])
+const emits =  defineEmits(["close-aside"]) 
 
 const props =  defineProps({
     showAsideMenu: Boolean
@@ -24,7 +24,7 @@ function handleNavigation(routeName){
         <ul class="aside-menu__items">
             
                 <li @click="handleNavigation('/')" class="aside-menu__items__item">Home</li>
-           
+                
                 <li @click="handleNavigation('/profile')" class="aside-menu__items__item">Historia</li>
             
                 <li @click="handleNavigation('/contact')" class="aside-menu__items__item">Contacto</li>

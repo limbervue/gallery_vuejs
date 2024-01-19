@@ -85,6 +85,9 @@
     header{
         margin-bottom: -55px;
     }
+    h1{
+        color: white;
+    }
     .content-header{
         z-index: 8;
         position: fixed;

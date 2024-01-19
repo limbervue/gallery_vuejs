@@ -1,8 +1,15 @@
 <script setup>
-    import { ref, onMounted, onBeforeUnmount} from 'vue';
+    import { ref, onMounted} from 'vue';
     import categoryTitle from '../data/category_titles.json';
+    import { useRoute } from 'vue-router';
     
+    const route = useRoute();
     defineEmits(['toggle-aside']);
+
+    const props =  defineProps({
+        isContact: Boolean,
+        isAbout: Boolean 
+    })
 
     const max950 = ref(window.innerWidth > 950);
     const min950 = ref(window.innerWidth < 950);
@@ -14,6 +21,7 @@
 
     onMounted(() => {
         window.addEventListener('resize', handleResize); // Agregar el listener al cargar el componente
+        
     });
 
 </script>
@@ -24,7 +32,7 @@
                 <div class="content-header">
                     
                     <h1 class="nav__title">{{ categoryTitle[$route.params.category??'default'] }} </h1>
-                    
+
                 </div>
             
                 <ul class="nav__items">
@@ -81,6 +89,9 @@
     }
     h1{
         color: white;
+        font-size: 3.2em;
+        line-height: 1.1;
+
     }
     header{
         height: 170px;
