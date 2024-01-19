@@ -46,7 +46,7 @@
         <section v-if="route.name == 'root'" class="container">
             <article class="welcome" >
                 
-                <p>¡Bienvenido a mi Galleria de Arte LimbertArt, donde las expresiones artísticas cobran vida! 🎨 Soy Limbert, tu anfitrión desde Ecuador, y estoy emocionado de presentarte una variedad de retratos.
+                <p>¡Bienvenido a mi Galleria de Arte LimbertArt, donde las expresiones artísticas cobran vida! Soy Limbert, tu anfitrión desde Ecuador, y estoy emocionado de presentarte una variedad de retratos.
 
                  Cada dibujo es una obra de arte que busca transmitir emociones y que capturan la esencia única de cada ser.</p>
             </article>
