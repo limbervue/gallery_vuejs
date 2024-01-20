@@ -40,7 +40,7 @@
 
 <template>
     <Header v-if="max950" @toggle-aside="isAsideOpen = !isAsideOpen"/>
-    <HeaderMobile v-if="min950"  @toggle-aside1="isAsideOpen1 = !isAsideOpen1" @toggle-aside2="isAsideOpen2 = !isAsideOpen2" />
+    <HeaderMobile v-if="min950"  @toggle-aside1="isAsideOpen1 = !isAsideOpen1, isAsideOpen2 = false" @toggle-aside2="isAsideOpen2 = !isAsideOpen2, isAsideOpen1 = false" />
 
     <AsideMenu v-if="max950" @close-aside="isAsideOpen = false" :show-aside-menu="isAsideOpen" />
     <AsideMenuMobile v-if="min950" @close-aside1="isAsideOpen1 = false" :show-aside-menu1="isAsideOpen1" @close-aside2="isAsideOpen2 = false" :show-aside-menu2="isAsideOpen2" />
@@ -51,7 +51,6 @@
             <article class="welcome" >
                 
                 <p>¡Bienvenido a mi Galleria de Arte LimbertArt, donde las expresiones artísticas cobran vida! Soy Limbert, tu anfitrión desde Ecuador, y estoy emocionado de presentarte una variedad de retratos.
-
                  Cada dibujo es una obra de arte que busca transmitir emociones y que capturan la esencia única de cada ser.</p>
             </article>
         </section>
@@ -100,6 +99,7 @@
         color: white;
         position: relative;
         top: -72px;
+        z-index: 4;
     }
     @media(max-width: 1880px) {
 

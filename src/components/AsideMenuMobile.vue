@@ -42,7 +42,7 @@ function handleNavigation2(routeName){
     <aside class="aside-menu2" :class="{'--show2': showAsideMenu2}">
         <ul class="aside-menu2__items">
             
-                <li @click="handleNavigation2('/gallery/personales')" class="aside-menu2__items__item">Personasles</li>
+                <li @click="handleNavigation2('/gallery/personales')" class="aside-menu2__items__item">Personales</li>
                 
                 <li @click="handleNavigation2('/gallery/pareja')" class="aside-menu2__items__item">Parejas</li>
             
@@ -68,7 +68,7 @@ function handleNavigation2(routeName){
     transition: all 0.3s;
     padding-top: 20px;
     border-radius: 10px;
-
+    z-index: 7;
     &__items{
         list-style-type: none;
         display: grid;
@@ -105,6 +105,7 @@ function handleNavigation2(routeName){
         padding-top: 20px;
         right: 0;
         border-radius: 10px;
+        z-index: 7;
 
     &__items{
         list-style-type: none;
