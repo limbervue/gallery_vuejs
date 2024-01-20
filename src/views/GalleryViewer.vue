@@ -125,7 +125,6 @@ const inner = ref(false)
         flex-direction: row;
         flex-wrap: wrap;
         padding: 30px;
-        // padding-top: 170px;
         justify-content: center;
     }
     .images-color{
@@ -212,7 +211,7 @@ const inner = ref(false)
     }
     @media (max-width: 766px) {
         .images{
-            padding-top: 209px;
+            padding-top: 140px;
         }
         .images-color{
             padding-top: 35px;
@@ -234,9 +233,7 @@ const inner = ref(false)
         }
     }
     @media (max-width: 512px) {
-        .images{
-            padding-top: 207px;
-        }
+    
         .images-color{
             padding-top: 35px;
         }

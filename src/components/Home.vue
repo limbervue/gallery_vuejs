@@ -3,6 +3,7 @@
     import Header from "../components/Header.vue";
     import HeaderMobile from "../components/HeaderMobile.vue";
     import AsideMenu from "../components/AsideMenu.vue";
+    import AsideMenuMobile from '../components/AsideMenuMobile.vue';
     import Footer from './Footer.vue';
     import { useRoute } from 'vue-router';
 
@@ -32,15 +33,18 @@
         window.addEventListener('resize', handleResize); 
     });
     let isAsideOpen = ref(false);
-    
+    let isAsideOpen1 = ref(false);
+    let isAsideOpen2 = ref(false);
 
 </script>
 
 <template>
     <Header v-if="max950" @toggle-aside="isAsideOpen = !isAsideOpen"/>
-    <HeaderMobile v-if="min950" />
+    <HeaderMobile v-if="min950"  @toggle-aside1="isAsideOpen1 = !isAsideOpen1" @toggle-aside2="isAsideOpen2 = !isAsideOpen2" />
 
-    <AsideMenu @close-aside="isAsideOpen = false" :show-aside-menu="isAsideOpen" />
+    <AsideMenu v-if="max950" @close-aside="isAsideOpen = false" :show-aside-menu="isAsideOpen" />
+    <AsideMenuMobile v-if="min950" @close-aside1="isAsideOpen1 = false" :show-aside-menu1="isAsideOpen1" @close-aside2="isAsideOpen2 = false" :show-aside-menu2="isAsideOpen2" />
+
     <main class="main-content">
 
         <section v-if="route.name == 'root'" class="container">

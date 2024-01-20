@@ -1,15 +1,8 @@
 <script setup>
     import { ref, onMounted} from 'vue';
     import categoryTitle from '../data/category_titles.json';
-    import { useRoute } from 'vue-router';
     
-    const route = useRoute();
     defineEmits(['toggle-aside']);
-
-    const props =  defineProps({
-        isContact: Boolean,
-        isAbout: Boolean 
-    })
 
     const max950 = ref(window.innerWidth > 950);
     const min950 = ref(window.innerWidth < 950);
@@ -37,8 +30,8 @@
             
                 <ul class="nav__items">
                 
-                    <li class="nav__items__item" @click="$emit('toggle-aside')"> 
-                        <div v-if="max950">
+                    <li class="nav__items__item menu" @click="$emit('toggle-aside')"> 
+                        <div>
                             <img class="aside-menu-toggle" src="../assets/images/menu_white.png">    
                         </div>
                         
@@ -64,12 +57,7 @@
                         <li class="nav__items__item">Aves</li>
                     </router-link>
 
-                    <li class="nav__items__item" @click="$emit('toggle-aside')"> 
-                        <div v-if="min950">
-                            <img class="aside-menu-toggle" src="../assets/images/menu_white.png">    
-                        </div>
-                        
-                    </li>
+                    
 
                 </ul>
                 
@@ -80,13 +68,7 @@
 
 
 <style lang="scss" scoped>
-    .content-header img{
-        position: absolute;
-        width: 150px;
-        top: 2px;
-        right: 680px;
-        opacity: 0.4;
-    }
+    
     h1{
         color: white;
         font-size: 3.2em;
@@ -141,7 +123,10 @@
             }
         }
     }
-    
+    .menu{
+        position: absolute;
+        left: 15px;
+    }
 
 
 

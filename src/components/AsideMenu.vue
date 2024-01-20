@@ -37,13 +37,12 @@ function handleNavigation(routeName){
 
 <style lang="scss" scoped>
 .aside-menu{
-    z-index: 9;
+
     position: fixed;
-    top: 0;
-    left: -200px;
-    height: 100svh;
-    background-color: rgb(24, 82, 81);
-    width: 200px;
+    top: -100px;
+    height: 200px;
+    background-color: rgb(24, 82, 81,0.6);
+    width: 170px;
     transition: all 0.3s;
     padding-top: 10px;
     
@@ -68,7 +67,7 @@ function handleNavigation(routeName){
         }
     }
     &.--show{
-        left: 0;
+        top: 160px;
     }
 }
 </style>
