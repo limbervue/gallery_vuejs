@@ -106,7 +106,7 @@
             width: 50px;
         }
         .container{
-            padding-top: 300px;
+            padding-top: 550px;
         }
     }
 
