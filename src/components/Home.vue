@@ -49,17 +49,27 @@
 
     function handleToggleAside1() {
      
-     menuToggle1.value = !menuToggle1.value;
-     menuEquis1.value = !menuEquis1.value;
-     
-   }
+        menuToggle1.value = !menuToggle1.value;
+        menuEquis1.value = !menuEquis1.value;
+        
+        if (menuEquis2.value && !menuToggle2.value && menuEquis1.value && !menuToggle1.value  ) {
+            menuEquis2.value = false;
+            menuToggle2.value = true;
+        }
+        
+    }
 
    function handleToggleAside2() {
      
-     menuToggle2.value = !menuToggle2.value;
-     menuEquis2.value = !menuEquis2.value;
-     
-   }
+    menuToggle2.value = !menuToggle2.value;
+    menuEquis2.value = !menuEquis2.value;
+    
+    if (menuEquis1.value && !menuToggle1.value && menuEquis2.value && !menuToggle2.value) {
+        menuEquis1.value = false;
+        menuToggle1.value = true;
+    }
+        
+    }
 
 </script>
 
