@@ -11,7 +11,15 @@
 
     const max950 = ref(window.innerWidth > 766);
     const min950 = ref(window.innerWidth <= 766);
-
+    let isAsideOpen = ref(false);
+    let isAsideOpen1 = ref(false);
+    let isAsideOpen2 = ref(false);
+    let menuToggle = ref(true);
+    let menuEquis = ref(false);
+    let menuToggle1 = ref(true);
+    let menuEquis1 = ref(false);
+    let menuToggle2 = ref(true);
+    let menuEquis2 = ref(false);
     
     onUpdated(()=>{
         
@@ -20,7 +28,7 @@
         }else{
             inner.value = false
         }    
-
+        
     });
     const inner = ref(false)
     
@@ -32,18 +40,38 @@
     onMounted(() => {
         window.addEventListener('resize', handleResize); 
     });
-    let isAsideOpen = ref(false);
-    let isAsideOpen1 = ref(false);
-    let isAsideOpen2 = ref(false);
+    function handleToggleAside() {
+     
+      menuToggle.value = !menuToggle.value;
+      menuEquis.value = !menuEquis.value;
+      
+    }
+
+    function handleToggleAside1() {
+     
+     menuToggle1.value = !menuToggle1.value;
+     menuEquis1.value = !menuEquis1.value;
+     
+   }
+
+   function handleToggleAside2() {
+     
+     menuToggle2.value = !menuToggle2.value;
+     menuEquis2.value = !menuEquis2.value;
+     
+   }
 
 </script>
 
 <template>
-    <Header v-if="max950" @toggle-aside="isAsideOpen = !isAsideOpen"/>
-    <HeaderMobile v-if="min950"  @toggle-aside1="isAsideOpen1 = !isAsideOpen1, isAsideOpen2 = false" @toggle-aside2="isAsideOpen2 = !isAsideOpen2, isAsideOpen1 = false" />
+    <Header v-if="max950" @toggle-aside="isAsideOpen = !isAsideOpen, handleToggleAside()" :menu-toggle="menuToggle" :menu-equis="menuEquis" />
 
-    <AsideMenu v-if="max950" @close-aside="isAsideOpen = false" :show-aside-menu="isAsideOpen" />
-    <AsideMenuMobile v-if="min950" @close-aside1="isAsideOpen1 = false" :show-aside-menu1="isAsideOpen1" @close-aside2="isAsideOpen2 = false" :show-aside-menu2="isAsideOpen2" />
+    <HeaderMobile v-if="min950"  @toggle-aside1="isAsideOpen1 = !isAsideOpen1, isAsideOpen2 = false, handleToggleAside1()" @toggle-aside2="isAsideOpen2 = !isAsideOpen2, isAsideOpen1 = false, handleToggleAside2()" :menu-toggle1="menuToggle1" :menu-equis1="menuEquis1" :menu-toggle2="menuToggle2" :menu-equis2="menuEquis2"/>
+
+    <!-- ----------------------------------------ASIDE-MENU ------------------------------------------------------------------->
+    <AsideMenu v-if="max950" @close-aside="isAsideOpen = false, handleToggleAside()" :show-aside-menu="isAsideOpen" :menu-toggle="menuToggle" :menu-equis="menuEquis" />
+
+    <AsideMenuMobile v-if="min950" @close-aside1="isAsideOpen1 = false, handleToggleAside1()" @close-aside2="isAsideOpen2 = false, handleToggleAside2()" :show-aside-menu1="isAsideOpen1" :show-aside-menu2="isAsideOpen2" :menu-toggle1="menuToggle1" :menu-equis1="menuEquis1" :menu-toggle2="menuToggle2" :menu-equis2="menuEquis2"  />
 
     <main class="main-content">
 

@@ -7,14 +7,18 @@ const route = useRouter();
 const emits =  defineEmits(["close-aside"]) 
 
 const props =  defineProps({
-    showAsideMenu: Boolean
+    showAsideMenu: Boolean,
+    menuToggle: Boolean,
+    menuEquis: Boolean
 })
 function handleNavigation(routeName){
 
-    emits('close-aside');
+    emits('close-aside',{
+        menuToggle:true,
+        menuEquis:false
+    });
     route.push({path: routeName});
 }
-
 
 </script>
     

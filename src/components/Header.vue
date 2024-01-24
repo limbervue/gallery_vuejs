@@ -2,7 +2,12 @@
     import { ref, onMounted} from 'vue';
     import categoryTitle from '../data/category_titles.json';
     
-    defineEmits(['toggle-aside']);
+    defineEmits(['toggle-aside','close-equis']);
+
+    const props = defineProps({
+        menuToggle: Boolean, 
+        menuEquis: Boolean
+    })
 
     const max950 = ref(window.innerWidth > 950);
     const min950 = ref(window.innerWidth < 950);
@@ -30,13 +35,17 @@
             
                 <ul class="nav__items">
                 
-                    <li class="nav__items__item menu" @click="$emit('toggle-aside')"> 
-                        <div>
+                    <li class="nav__items__item menu"  @click="$emit('toggle-aside')"> 
+                        <div  v-if="menuToggle">
                             <img class="aside-menu-toggle" src="../assets/images/menu_white.png">    
                         </div>
-                        
+
+                        <div v-if="menuEquis">
+                            <img class="aside-menu-toggle" src="../assets/images/equis.png">    
+                        </div>
                     </li>
                     
+
                     <router-link to="/gallery/personales">
                         <li class="nav__items__item">Personales</li>
                     </router-link>
@@ -68,7 +77,10 @@
 
 
 <style lang="scss" scoped>
-    
+    .equis{
+        color: aliceblue;
+        width: 40px;
+    }
     h1{
         color: white;
         font-size: 3.2em;

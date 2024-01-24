@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onUpdated, watch } from 'vue';
+import { ref, onUpdated } from 'vue';
 import CatalogoFotos from '../data/gallery_data';
 
 import { useRoute } from 'vue-router';
@@ -231,6 +231,7 @@ const inner = ref(false)
             margin: 8px;
             width: 108px;
         }
+        
     }
     @media (max-width: 512px) {
     

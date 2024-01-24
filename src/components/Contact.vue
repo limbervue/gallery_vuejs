@@ -1,49 +1,9 @@
 <script setup>
-    import { ref, onMounted, onUpdated, watch } from 'vue';
-    import Header from "../components/Header.vue";
-    import HeaderMobile from "../components/HeaderMobile.vue";
-    import AsideMenu from "../components/AsideMenu.vue";
-    import AsideMenuMobile from '../components/AsideMenuMobile.vue';
-    import Footer from './Footer.vue';
-    import { useRoute } from 'vue-router';
-
-    const route = useRoute();
-
-    const max950 = ref(window.innerWidth > 766);
-    const min950 = ref(window.innerWidth <= 766);
-
-    
-    onUpdated(()=>{
-        
-        if(window.innerWidth > 766){
-        inner.value = true
-        }else{
-            inner.value = false
-        }    
-
-    });
-    const inner = ref(false)
-    
-    const handleResize = () => {
-        max950.value = window.innerWidth > 766;
-        min950.value = window.innerWidth <= 766;
-    };
-
-    onMounted(() => {
-        window.addEventListener('resize', handleResize); 
-    });
-    let isAsideOpen = ref(false);
-    let isAsideOpen1 = ref(false);
-    let isAsideOpen2 = ref(false);
+   
 </script>
 
 <template>
-    <Header v-if="max950" @toggle-aside="isAsideOpen = !isAsideOpen"/>
-    <HeaderMobile v-if="min950"  @toggle-aside1="isAsideOpen1 = !isAsideOpen1" @toggle-aside2="isAsideOpen2 = !isAsideOpen2" />
-
-    <AsideMenu v-if="max950" @close-aside="isAsideOpen = false" :show-aside-menu="isAsideOpen" />
-    <AsideMenuMobile v-if="min950" @close-aside1="isAsideOpen1 = false" :show-aside-menu1="isAsideOpen1" @close-aside2="isAsideOpen2 = false" :show-aside-menu2="isAsideOpen2" />
-
+    
     <div class="container">
         <section class="global">
             
@@ -82,10 +42,9 @@
         padding-bottom: 100px;
         
     }
-    /*///////////////////////////TITULO*/
-    
-
-    /*/////////////////////////PARRAFO */
+    .container{
+        margin-top: 150px;
+    }
     .contacto p{
         font-family: Helvetica, Arial;
         line-height: 22px;
@@ -119,7 +78,7 @@
             margin-top: -280px;
         }
         .container{
-            padding-top: 264px;
+            padding-top: 350px;
             height: 100vh;
         }
     }
@@ -128,7 +87,7 @@
     @media (max-width: 766px) {
         
         .container{
-            padding-top: 694px;
+            padding-top: 450px;
         }
 
     }
@@ -146,7 +105,9 @@
         .imagenes img{
             width: 50px;
         }
-
+        .container{
+            padding-top: 300px;
+        }
     }
 
     @media (max-width: 395px) {

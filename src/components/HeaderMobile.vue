@@ -4,6 +4,13 @@
 
     defineEmits(['toggle-aside1', 'toggle-aside2']);
 
+    const props = defineProps({
+        menuToggle1: Boolean, 
+        menuEquis1: Boolean,
+        menuToggle2: Boolean, 
+        menuEquis2: Boolean
+    })
+
     const max950 = ref(window.innerWidth > 950);
     const min950 = ref(window.innerWidth < 950);
     // Función para actualizar el valor de width852 cuando cambia el tamaño de la ventana
@@ -32,15 +39,25 @@
             <ul class="nav__items">
 
                 <li class="nav__items__item menu1" @click="$emit('toggle-aside1')">
-                    <div>
+                    <div  v-if="menuToggle1">
                         <img class="aside-menu-toggle" src="../assets/images/menu_white.png">    
                     </div>
+                    
+                    <div v-if="menuEquis1">
+                        <img class="aside-menu-toggle equis" src="../assets/images/equis.png">    
+                    </div>
+
                 </li>
                 
                 <li class="nav__items__item menu2" @click="$emit('toggle-aside2')">
-                    <div>
+                    <div  v-if="menuToggle2">
                         <img class="aside-menu-toggle" src="../assets/images/menu_white.png">    
                     </div>
+                    
+                    <div v-if="menuEquis2">
+                        <img class="aside-menu-toggle equis" src="../assets/images/equis.png">    
+                    </div>
+
                 </li>
             
             </ul>
@@ -51,7 +68,10 @@
 </template>
 
 <style scoped>
-
+    .equis{
+        color: aliceblue;
+        width: 30px;
+    }
     h1{
         color: white;
         font-size: 2.2em;
@@ -71,7 +91,7 @@
         border-bottom: 4px solid rgb(115, 205, 198);
         padding-bottom: 10px;
         left: 0;
-        height: 120px;
+        height: 130px;
 
         &__title{
             text-align: center;
@@ -113,87 +133,37 @@
     }
     .menu1{
         position: absolute;
-        left: 15px;
+        left: 30px;
+        top: 80px;
         list-style: none;
     }
     .menu2{
         position: absolute;
         right: 40px;
+        top: 80px;
         list-style: none;
     }
     
     @media (max-width: 767px) {
-        .nav__title h1{
+        
+        h1{
             font-size: 34px;
         }
-        .nav__title{
-            left: 116px;
-            top: 32px; 
-        }
+        
     }
 
-    @media (max-width: 568px) {
-        .dropMenu1 img{
-            width: 32px;
-        }
-        .dropMenu2 img{
-            width: 32px;
-        }
-        .nav__title h1{
+    @media (max-width: 524px) {
+       .nav__title{
+            position: relative;
+            left: 10px;
+       }
+    }
+
+    @media (max-width: 360px) {
+        .nav__title{
             font-size: 30px;
-        }
-        .nav__title{
-            left: 103px;
-            top: 32px; 
-        }
+            left: 15px;
+       }
     }
-    @media (max-width: 514px) {
 
-        .dropMenu1 img{
-            width: 26px;
-        }
-        .dropMenu2 img{
-            width: 26px;
-        }
-        .dropMenu1{
-            top: 14px;
-            left: 2px;
-        }
-        .dropMenu2{
-            top: 14px;
-            right: 2px;
-        }
-        .nav__title{
-            left: 78px;
-            top: 33px;
-        }
-
-        .nav__title h1{
-            font-size: 24px;
-        }
-    }
-    @media (max-width: 396px) {
-        .dropMenu1 img{
-            width: 22px;
-        }
-        .dropMenu2 img{
-            width: 22px;
-        }
-        .dropMenu1{
-            top: 14px;
-            left: 2px;
-        }
-        .dropMenu2{
-            top: 14px;
-            right: 2px;
-        }
-        .nav__title{
-            left: 67px;
-            top: 34px;
-        }
-
-        .nav__title h1{
-            font-size: 20px;
-        }
-    }
 </style>

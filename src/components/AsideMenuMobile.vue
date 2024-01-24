@@ -8,17 +8,27 @@ const emits =  defineEmits(["close-aside1", "close-aside2"])
 
 const props =  defineProps({
     showAsideMenu1: Boolean,
-    showAsideMenu2: Boolean
+    showAsideMenu2: Boolean,
+    menuToggle1: Boolean,
+    menuEquis1: Boolean,
+    menuToggle2: Boolean,
+    menuEquis2: Boolean
 })
 function handleNavigation1(routeName){
 
-    emits('close-aside1');
+    emits('close-aside1',{
+        menuToggle1:true,
+        menuEquis1:false
+    })   
     route.push({path: routeName});
 }
 
 function handleNavigation2(routeName){
 
-    emits('close-aside2');
+    emits('close-aside2',{
+        menuToggle2:true,
+        menuEquis2:false
+    });   
     route.push({path: routeName});
 }
 
