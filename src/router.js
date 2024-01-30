@@ -2,7 +2,8 @@ import { createRouter, createWebHashHistory } from "vue-router"
 import Home from "./components/Home.vue"
 import GalleryViewer from "./views/GalleryViewer.vue";
 import Navigator from "./views/Navigator.vue";
-import Compras from "./views/Compras.vue";
+import Precios from "./views/Precios.vue"
+
 const routes = [
 	{
 		path: "/",
@@ -19,9 +20,10 @@ const routes = [
 				component: GalleryViewer,
 			},
 			{
-				path:'/gallery/:category/:id',
-				component: Compras
+				path:'/retratos/:category',
+				component: Precios
 			}
+
 			
 		]
 	},

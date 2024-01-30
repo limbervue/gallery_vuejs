@@ -3,116 +3,89 @@
 </script>
 
 <template>
-    
-    <div class="container">
-        <section class="global">
-            
-            <div class="contacto">
-                
-                <br>
-                <div class="imagenes">
-                    <div class="content_img img_whats">
-                        <img src="../../public/images/whatsapp.png">
-                        <p><a href="https://wa.me/c/593961203563" target="_blank">0961203563</a></p>
-                    </div>
+    <section class="contact-container">
+        <div class="contact-container__content-images">
 
-                    <div class="content_img img_insta">
-                        <img src="../../public/images/instagram.png">
-                        <p><a href="https://www.instagram.com/limbert_art/" target="_blank">Limbert_art</a></p> 
-                    </div>
-                </div>
+            <div class="contact-container__content-images__whatsapp contact-container__content-images__image">
 
+                <img  class="contact-container__content-images__whatsapp__img" src="../../public/images/whatsapp.png">
+                <p>
+                    <a href="https://wa.me/c/593961203563" target="_blank">0961203563</a>
+                </p>
             </div>
-        </section>
-    </div>
+
+            <div class="contact-container__content-images__instagram contact-container__content-images__image">
+
+                <img class="contact-container__content-images__instagram__img" src="../../public/images/instagram.png">
+                <p>
+                    <a href="https://www.instagram.com/limbert_art/" target="_blank">Limbert_art</a>
+                </p> 
+            </div>
+        </div>
+        
+               
+    </section>
+    
+
 
     <router-view></router-view>
 </template>
 
 <style lang="scss" scoped>
     
-    .global .contacto{
-        font-family: Helvetica,Arial;
-        width: 60%;
-        text-align: justify;
-        float: none;
-        margin-right: 40px;
-        margin-left: 45px;
+    .contact-container{
         display: flex;
-        padding-bottom: 100px;
-        
-    }
-    .container{
-        margin-top: 150px;
-    }
-    .contacto p{
-        font-family: Helvetica, Arial;
-        line-height: 22px;
-        text-align: justify;
-        letter-spacing: 1px;
-        cursor: pointer;
-    }
-    .contacto p a{
-        color: antiquewhite;
-    }
-    .contacto img{
-        width: 60px;
-        text-align: left;
-        margin-bottom: 10px;
-    }
-    
-    .content_img{
-        padding-bottom: 80px;
-    }
-    .imagenes{
-        text-align: center;
-    }
-    
-    .global{
-        max-width: 100%;
-        width: 100%;
-    }
+        flex-wrap: wrap;
+        height: 750px;
 
-    @media (max-width: 1890px) {
-        .imagenes{
-            margin-top: -280px;
-        }
-        .container{
-            padding-top: 350px;
-            height: 100vh;
-        }
-    }
-
-
-    @media (max-width: 766px) {
-        
-        .container{
-            padding-top: 450px;
-        }
-
-    }
-
-    @media (max-width: 509px) {
-        
-        .img_insta{
+        &__content-images{
             position: relative;
-            top: -197px;
+            top: 150px;
+            left: 40px;
+
+            &__image img{
+                width: 60px;
+            }
+            &__image p{
+                margin-top: 15px;
+                a{
+                    color: white;
+                }
+            }
+
+            &__whatsapp{
+                margin-bottom: 120px;
+
+            }
+
         }
-        .img_whats{
-            position: relative;
-            top: -176px;
+    }
+    @media (max-width: 891px) {
+        .contact-container{
+            margin-bottom: 10px;
         }
-        .imagenes img{
+        
+        
+    }
+
+    @media(max-width: 766px) {
+        .contact-container__content-images{
+            top: 250px;
+        }
+        .contact-container__content-images__image img{
             width: 50px;
         }
-        .container{
-            padding-top: 550px;
+        .contact-container{
+            margin-bottom: 130px;
         }
     }
 
-    @media (max-width: 395px) {
-        .container{
-            height: 100%;
+    @media (max-width: 412px) {
+        .contact-container{
+            margin-bottom: 120px;
         }
+        
+        
     }
+    
 </style>

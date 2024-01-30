@@ -1,61 +1,49 @@
 <script setup>
-    import { ref, onMounted} from 'vue';
+
     import categoryTitle from '../data/category_titles.json';
 
-    defineEmits(['toggle-aside1', 'toggle-aside2']);
+    defineEmits(['toggle-aside-category', 'toggle-aside-retratos']);
 
     const props = defineProps({
-        menuToggle1: Boolean, 
-        menuEquis1: Boolean,
-        menuToggle2: Boolean, 
-        menuEquis2: Boolean
+        menuToggleCategory: Boolean, 
+        menuEquisCategory: Boolean,
+        menuToggleRetratos: Boolean, 
+        menuEquisRetratos: Boolean
     })
 
-    const max950 = ref(window.innerWidth > 950);
-    const min950 = ref(window.innerWidth < 950);
-    // Función para actualizar el valor de width852 cuando cambia el tamaño de la ventana
-    const handleResize = () => {
-        max950.value = window.innerWidth > 950;
-        min950.value = window.innerWidth < 950;
-    };
-
-    onMounted(() => {
-        window.addEventListener('resize', handleResize); // Agregar el listener al cargar el componente
-        
-    });
-
-   
 </script>
 
 <template>
     <header>
     
-        <nav class="nav">
+        <nav class="nav-mobile">
 
             <div class="content-headerMobile">  
-                <h1 class="nav__title">{{ categoryTitle[$route.params.category??'default'] }} </h1>
+                <h1 class="nav-mobile__title">{{ categoryTitle[$route.params.category??'default'] }} </h1>
             </div>
 
-            <ul class="nav__items">
+            <ul class="nav-mobile__items">
 
-                <li class="nav__items__item menu1" @click="$emit('toggle-aside1')">
-                    <div  v-if="menuToggle1">
-                        <img class="aside-menu-toggle" src="../assets/images/menu_white.png">    
+                <li class="nav-mobile__items__item nav-mobile__items__category" @click="$emit('toggle-aside-category')">
+                    
+                    <div  v-if="menuToggleCategory" class="nav-mobile__items__item__aside-menu-toggle">
+                        <img src="../assets/images/menu_white.png">    
                     </div>
                     
-                    <div v-if="menuEquis1">
-                        <img class="aside-menu-toggle equis" src="../assets/images/equis.png">    
+                    <div v-if="menuEquisCategory" class="nav-mobile__items__item__aside-menu-toggle">
+                        <img src="../assets/images/equis.png">    
                     </div>
 
                 </li>
                 
-                <li class="nav__items__item menu2" @click="$emit('toggle-aside2')">
-                    <div  v-if="menuToggle2">
-                        <img class="aside-menu-toggle" src="../assets/images/menu_white.png">    
+                <li v-if="$route.name === 'root' || $route.path === '/gallery/personales' || $route.path === '/gallery/parejas' || $route.path === '/gallery/familiares' || $route.path === '/gallery/perros' || $route.path === '/gallery/aves'" class="nav-mobile__items__item nav-mobile__items__retratos" @click="$emit('toggle-aside-retratos')">
+
+                    <div  v-if="menuToggleRetratos" class="nav-mobile__items__item__aside-menu-toggle">
+                        <img src="../assets/images/menu_white.png">    
                     </div>
                     
-                    <div v-if="menuEquis2">
-                        <img class="aside-menu-toggle equis" src="../assets/images/equis.png">    
+                    <div v-if="menuEquisRetratos" class="nav-mobile__items__item__aside-menu-toggle">
+                        <img src="../assets/images/equis.png">    
                     </div>
 
                 </li>
@@ -67,11 +55,8 @@
     </header>
 </template>
 
-<style scoped>
-    .equis{
-        color: aliceblue;
-        width: 30px;
-    }
+<style lang="scss" scoped>
+    
     h1{
         color: white;
         font-size: 2.2em;
@@ -81,7 +66,7 @@
     header{
         height: 0px;
     }
-    nav, .nav{
+    nav, .nav-mobile{
         z-index: 8;
         position: fixed;
         top: 0;
@@ -118,32 +103,32 @@
                 color: white;
                 font-size: 18px;
                 text-shadow: 1px 1px 2px black;
-        
-                .aside-menu-toggle{
+                position: absolute;
+                list-style: none;
+                top: 80px;
+
+                &__aside-menu-toggle{ 
                 
-                    width:25px;
-                    color: white;
+                    img{
+                        width:25px;
+                    }
                 }
                 &:hover{
                     cursor: pointer;
                     background-color: rgb(27, 144, 142);
                 }
             }
+            &__category{
+                left: 30px;
+                
+            }
+            &__retratos{
+                right: 30px;
+    
+            }
         }
     }
-    .menu1{
-        position: absolute;
-        left: 30px;
-        top: 80px;
-        list-style: none;
-    }
-    .menu2{
-        position: absolute;
-        right: 40px;
-        top: 80px;
-        list-style: none;
-    }
-    
+
     @media (max-width: 767px) {
         
         h1{

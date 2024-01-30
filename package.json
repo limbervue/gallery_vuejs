@@ -10,9 +10,11 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "vue": "^3.3.4",
+    "@coreui/vue": "^4.10.2",
+    "bootstrap": "^4.6.2",
+    "vue": "^3.4.15",
     "vue-router": "^4.2.5",
-    "vuetify": "^3.4.9"
+    "vuetify": "^3.5.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

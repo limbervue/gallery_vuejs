@@ -9,33 +9,21 @@
         menuEquis: Boolean
     })
 
-    const max950 = ref(window.innerWidth > 950);
-    const min950 = ref(window.innerWidth < 950);
-    // Función para actualizar el valor de width852 cuando cambia el tamaño de la ventana
-    const handleResize = () => {
-        max950.value = window.innerWidth > 950;
-        min950.value = window.innerWidth < 950;
-    };
-
-    onMounted(() => {
-        window.addEventListener('resize', handleResize); // Agregar el listener al cargar el componente
-        
-    });
-
 </script>
 
 <template>
      <header>
-        <nav class="nav">
+        <nav class="nav-main">
                 <div class="content-header">
                     
-                    <h1 class="nav__title">{{ categoryTitle[$route.params.category??'default'] }} </h1>
+                    <h1 class="nav-main__title">{{ categoryTitle[$route.params.category??'default'] }} </h1>
 
                 </div>
             
-                <ul class="nav__items">
+                <ul class="nav-main__items ">
                 
-                    <li class="nav__items__item menu"  @click="$emit('toggle-aside')"> 
+                    <li class="nav-main__items__item nav-main__items__menu-category"  @click="$emit('toggle-aside')"> 
+
                         <div  v-if="menuToggle">
                             <img class="aside-menu-toggle" src="../assets/images/menu_white.png">    
                         </div>
@@ -45,29 +33,30 @@
                         </div>
                     </li>
                     
+                    <ul  v-if="$route.name === 'root' || $route.path === '/gallery/personales' || $route.path === '/gallery/parejas' || $route.path === '/gallery/familiares' || $route.path === '/gallery/perros' || $route.path === '/gallery/aves'" 
+                    class="nav-main__items ">
+                        <router-link to="/gallery/personales">
+                            <li class="nav-main__items__item">Personales</li>
+                        </router-link>
+                        
+                        <router-link to="/gallery/parejas">
+                            <li class="nav-main__items__item">Parejas</li>
+                        </router-link>
 
-                    <router-link to="/gallery/personales">
-                        <li class="nav__items__item">Personales</li>
-                    </router-link>
-                    
-                    <router-link to="/gallery/pareja">
-                        <li class="nav__items__item">Parejas</li>
-                    </router-link>
+                        <router-link to="/gallery/familiares">
+                            <li class="nav-main__items__item">Familiares</li>
+                        </router-link>
 
-                    <router-link to="/gallery/familiares">
-                        <li class="nav__items__item">Familiares</li>
-                    </router-link>
+                        <router-link to="/gallery/perros">
+                            <li class="nav-main__items__item">Perros</li>
+                        </router-link>
 
-                    <router-link to="/gallery/perros">
-                        <li class="nav__items__item">Perros</li>
-                    </router-link>
-
-                    <router-link to="/gallery/aves">
-                        <li class="nav__items__item">Aves</li>
-                    </router-link>
-
-                    
-
+                        <router-link to="/gallery/aves">
+                            <li class="nav-main__items__item">Aves</li>
+                        </router-link>
+ 
+                    </ul>
+                                           
                 </ul>
                 
             </nav>
@@ -77,10 +66,7 @@
 
 
 <style lang="scss" scoped>
-    .equis{
-        color: aliceblue;
-        width: 40px;
-    }
+
     h1{
         color: white;
         font-size: 3.2em;
@@ -90,7 +76,10 @@
     header{
         height: 170px;
     }
-    nav, .nav{
+    a:hover{
+        text-decoration: none;
+    }
+    nav, .nav-main{
         z-index: 8;
         position: fixed;
         top: 0;
@@ -100,6 +89,8 @@
         border-bottom: 4px solid rgb(115, 205, 198);
         padding-bottom: 10px;
         left: 0;
+        height: 160px;
+
         &__title{
             text-align: center;
             margin-top: 30px;
@@ -116,6 +107,8 @@
             list-style-type: none;
             gap: 12px;
             flex-wrap: wrap;
+            text-decoration: none;
+            
             &__item{
                 padding: 10px;
                 border-radius: 0.4rem;
@@ -123,6 +116,7 @@
                 color: white;
                 font-size: 18px;
                 text-shadow: 1px 1px 2px black;
+               
                 .aside-menu-toggle{
                 
                     width:25px;
@@ -133,14 +127,12 @@
                     background-color: rgb(27, 144, 142);
                 }
             }
+            &__menu-category{
+                position: absolute;
+                left: 15px;
+            }
         }
+        
     }
-    .menu{
-        position: absolute;
-        left: 15px;
-    }
-
-
-
     
 </style>

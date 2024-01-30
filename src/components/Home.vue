@@ -12,14 +12,14 @@
     const max950 = ref(window.innerWidth > 766);
     const min950 = ref(window.innerWidth <= 766);
     let isAsideOpen = ref(false);
-    let isAsideOpen1 = ref(false);
-    let isAsideOpen2 = ref(false);
+    let isAsideOpenCategory = ref(false);
+    let isAsideOpenRetratos = ref(false);
     let menuToggle = ref(true);
     let menuEquis = ref(false);
-    let menuToggle1 = ref(true);
-    let menuEquis1 = ref(false);
-    let menuToggle2 = ref(true);
-    let menuEquis2 = ref(false);
+    let menuToggleCategory = ref(true);
+    let menuEquisCategory = ref(false);
+    let menuToggleRetratos = ref(true);
+    let menuEquisRetratos = ref(false);
     
     onUpdated(()=>{
         
@@ -47,26 +47,26 @@
       
     }
 
-    function handleToggleAside1() {
+    function handleToggleAsideCategory() {
      
-        menuToggle1.value = !menuToggle1.value;
-        menuEquis1.value = !menuEquis1.value;
+        menuToggleCategory.value = !menuToggleCategory.value;
+        menuEquisCategory.value = !menuEquisCategory.value;
         
-        if (menuEquis2.value && !menuToggle2.value && menuEquis1.value && !menuToggle1.value  ) {
-            menuEquis2.value = false;
-            menuToggle2.value = true;
+        if (menuEquisRetratos.value && !menuToggleRetratos.value && menuEquisCategory.value && !menuToggleCategory.value  ) {
+            menuEquisRetratos.value = false;
+            menuToggleRetratos.value = true;
         }
         
     }
 
-   function handleToggleAside2() {
+   function handleToggleAsideRetratos() {
      
-    menuToggle2.value = !menuToggle2.value;
-    menuEquis2.value = !menuEquis2.value;
+    menuToggleRetratos.value = !menuToggleRetratos.value;
+    menuEquisRetratos.value = !menuEquisRetratos.value;
     
-    if (menuEquis1.value && !menuToggle1.value && menuEquis2.value && !menuToggle2.value) {
-        menuEquis1.value = false;
-        menuToggle1.value = true;
+    if (menuEquisCategory.value && !menuToggleCategory.value && menuEquisRetratos.value && !menuToggleRetratos.value) {
+        menuEquisCategory.value = false;
+        menuToggleCategory.value = true;
     }
         
     }
@@ -76,17 +76,17 @@
 <template>
     <Header v-if="max950" @toggle-aside="isAsideOpen = !isAsideOpen, handleToggleAside()" :menu-toggle="menuToggle" :menu-equis="menuEquis" />
 
-    <HeaderMobile v-if="min950"  @toggle-aside1="isAsideOpen1 = !isAsideOpen1, isAsideOpen2 = false, handleToggleAside1()" @toggle-aside2="isAsideOpen2 = !isAsideOpen2, isAsideOpen1 = false, handleToggleAside2()" :menu-toggle1="menuToggle1" :menu-equis1="menuEquis1" :menu-toggle2="menuToggle2" :menu-equis2="menuEquis2"/>
+    <HeaderMobile v-if="min950"  @toggle-aside-category="isAsideOpenCategory = !isAsideOpenCategory, isAsideOpenRetratos = false, handleToggleAsideCategory()" @toggle-aside-retratos="isAsideOpenRetratos = !isAsideOpenRetratos, isAsideOpenCategory = false, handleToggleAsideRetratos()" :menu-toggle-category="menuToggleCategory" :menu-equis-category="menuEquisCategory" :menu-toggle-retratos="menuToggleRetratos" :menu-equis-retratos="menuEquisRetratos"/>
 
     <!-- ----------------------------------------ASIDE-MENU ------------------------------------------------------------------->
     <AsideMenu v-if="max950" @close-aside="isAsideOpen = false, handleToggleAside()" :show-aside-menu="isAsideOpen" :menu-toggle="menuToggle" :menu-equis="menuEquis" />
 
-    <AsideMenuMobile v-if="min950" @close-aside1="isAsideOpen1 = false, handleToggleAside1()" @close-aside2="isAsideOpen2 = false, handleToggleAside2()" :show-aside-menu1="isAsideOpen1" :show-aside-menu2="isAsideOpen2" :menu-toggle1="menuToggle1" :menu-equis1="menuEquis1" :menu-toggle2="menuToggle2" :menu-equis2="menuEquis2"  />
+    <AsideMenuMobile v-if="min950" @close-aside-category="isAsideOpenCategory = false, handleToggleAsideCategory()" @close-aside-retratos="isAsideOpenRetratos = false, handleToggleAsideRetratos()" :show-aside-menu-category="isAsideOpenCategory" :show-aside-menu-retratos="isAsideOpenRetratos" :menu-toggle-category="menuToggleCategory" :menu-equis-category="menuEquisCategory" :menu-toggle-retratos="menuToggleRetratos" :menu-equis-retratos="menuEquisRetratos"  />
 
     <main class="main-content">
 
-        <section v-if="route.name == 'root'" class="container">
-            <article class="welcome" >
+        <section v-if="route.name == 'root'" class="history-content">
+            <article class="history-content__welcome" >
                 
                 <p>¡Bienvenido a mi Galleria de Arte LimbertArt, donde las expresiones artísticas cobran vida! Soy Limbert, tu anfitrión desde Ecuador, y estoy emocionado de presentarte una variedad de retratos.
                  Cada dibujo es una obra de arte que busca transmitir emociones y que capturan la esencia única de cada ser.</p>
@@ -116,77 +116,69 @@
     a{
         text-decoration: none;
     }
+    
+
     body{
 		background: url("/fondo_pagina.jpeg");
-		background-repeat: no-repeat;
-		opacity: 0.9;
-        margin:0;
-        overflow-x:hidden;
-        height: 100%;
-	}
-    
-    .welcome{
-        margin-top: 175px;
+        background-repeat: no-repeat;
+        background-size: cover;
         
+	}
+    .history-content{
+        
+        &__welcome{
+            margin-top: 175px;
+            
+            p{
+                width: 400px;
+                height: 582px;
+                margin: 0 auto;
+                font-size: 28px;
+                color: white;
+                position: relative;
+                top: -72px;
+                z-index: 4;
+                line-height: 1.5;
+            }
+
+        }
     }
-    .welcome p{
-        width: 400px;
-        height: 582px;
-        margin: 0 auto;
-        font-size: 28px;
-        color: white;
-        position: relative;
-        top: -72px;
-        z-index: 4;
-    }
+    
     @media(max-width: 1880px) {
 
-        .welcome p{
-            height: 750px;
+        .history-content{
+
+            &__welcome p{
+                height: 750px;
+            }
         }
+        
 
     }
-    @media(max-width: 1433px) {
-
-        .welcome p{
-            height: 750px;
-        }
-
-    }
+   
     @media(max-width: 766px) {
         
-        .welcome p{
-            width: 400px;
-            
-            margin: 0 auto;
-            font-size: 28px;
-            position: relative;
-            top: 130px;
-        } 
+        .history-content{
+
+            &__welcome p{
+                font-size: 24px;
+                position: relative;
+                top: 130px;
+                width: 350px;
+            }
+        }
+       
     }
 
-    @media(max-width: 568px) {
+    @media(max-width: 488px) {
         
-        .welcome p{
-            width: 70%;
-            margin: 0 auto;
-            font-size: 20px;
-            position: relative;
-            top: 79px;
-        } 
+        .history-content{
+            &__welcome p{
+                width: 70%;
+                font-size: 20px;
+                position: relative;
+            } 
+        }
     }
-    @media(max-width: 375px) {
-        
-        .welcome p{
-
-            top: 45px;
-        } 
-    }
-    @media(max-width: 348px) {
-        
-        .welcome p{
-            
-            top: 2px;
-        } 
-    }
+    
 </style>

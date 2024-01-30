@@ -108,6 +108,7 @@ const inner = ref(false)
         flex-wrap: wrap;
         padding: 30px;
         justify-content: center;
+
     }
     .images-color{
         margin-top: -70px;
@@ -157,7 +158,6 @@ const inner = ref(false)
             cursor: pointer; 
             border-radius: 20px;
             position: relative;
-            top: -240px;
         }
     }
     @media (max-width: 836px) {
@@ -167,7 +167,6 @@ const inner = ref(false)
             cursor: pointer; 
             border-radius: 20px;
             position: relative;
-            top: -240px;
         }
     }
 
@@ -232,7 +231,7 @@ const inner = ref(false)
             cursor: pointer; 
             border-radius: 20px;
             position: relative;
-            top: -108px;
+            
         }
     }
     @media (max-width: 403px) {

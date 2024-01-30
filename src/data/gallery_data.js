@@ -85,7 +85,7 @@ export default {
             },
         ],
     },
-    pareja:{
+    parejas:{
         imagesBn:[
             {
                 id:"parBn1",

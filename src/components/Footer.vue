@@ -5,13 +5,28 @@
 <template>
     <footer>
         <div class="footer">
-            <div class="row">
-                <a href="https://www.instagram.com/limbert_art/" target="_blank"><i class="fa fa-instagram"></i></a>
-                <a href="https://wa.me/c/593961203563" target="_blank"><i class="fa fa-whatsapp"></i></a>
+            <div class="footer__social-media">
+                
+                <div class="footer__social-media__img-whats footer__social-media__img">
+                    <a href="https://wa.me/c/593961203563">
+                        <img src="/whatsap-footer.png" alt="" >
+                    </a>
+                </div>
+
+                <div class="footer__social-media__img-insta footer__social-media__img">
+                    <a href="https://www.instagram.com/limbert_art/">
+                        <img src="/instagram-footer.png" alt="" >
+                    </a>
+                    
+                </div>
+                
             </div>
 
-            <div class="row">
-                LimbertArt Copyright © 2023 LimbertArt - All rights reserved 
+            <div class="footer__info">
+                <p>
+                    LimbertArt Copyright © 2023 LimbertArt - All rights reserved
+                </p>
+                 
             </div>
         </div>
 </footer>
@@ -21,66 +36,97 @@
     
     .footer{
         background:#000;
-        padding:30px 0px;
         font-family: 'Play', sans-serif;
-        text-align:center;
         width: 100%;
-        position: absolute;
-        left: 0;
-    }
+        height: 200px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
 
-    .footer .row{
-        width:100%;
-        margin:1% 0%;
-        padding:0.6% 0%;
-        color:gray;
-        font-size:0.8em;
-    }
+        &__social-media{
+            opacity: 0.3;
+            display: flex;
+            position: absolute;
+            
+            &__img-insta{
+                img{
+                    width: 35px;
+                    padding-top: 3px;
+                }
+            }
 
-    .footer .row a{
-        text-decoration:none;
-        color:gray;
-        transition:0.5s;
-    }
+            &__img-whats{
+                img{
+                    width: 40px;
+                   
+                }
+            }
 
-    .footer .row a:hover{
-        color:#fff;
-    }
+            &__img{
+                a:hover{
+                    cursor: pointer;
+                }
+               img{
+                margin: 10px;
+               }
+            }
 
-    .footer .row ul{
-        width:100%;
-    }
+        }
+        &__info{
+            position: relative;
+            top: 80px;
 
-    .footer .row ul li{
-        display:inline-block;
-        margin:0px 30px;
-    }
+            p{
+                color: white;
+                opacity: 0.4;
+            }
 
-    .footer .row a i{
-        font-size:2em;
-        margin:0% 1%;
+        }
     }
+    @media(max-width: 766px) {
 
-    @media (max-width:720px){
         .footer{
-            text-align:left;
-            padding:5%;
-        }
-        .footer .row ul li{
-            display:block;
-            margin:10px 0px;
-            text-align:left;
-        }
-        .footer .row a i{
-            margin:0% 3%;
+            &__info{
+                p{
+                    font-size: 15px;
+                }
+            }
+            &__social-media{
+
+                &__img-insta{
+                    img{
+                        width: 25px;
+                        padding-top: 3px;
+                    }
+                }
+
+                &__img-whats{
+                    img{
+                        width: 30px;
+                    
+                    }
+                    
+                }
+            }
         }
     }
-    
-    @media (max-width: 766px) {
+    @media(max-width: 500px) {
+
         .footer{
-           padding-top: 40px;
+            &__info{
+                p{
+                    width: 100%;
+                }
+            }
         }
     }
-    
+
+    @media(max-width: 483px) {
+
+        .footer{
+           padding-bottom: 30px;
+        }
+}
 
 </style>
