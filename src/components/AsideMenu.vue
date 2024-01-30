@@ -1,6 +1,5 @@
 <script setup>
 import { useRouter } from 'vue-router';
-import { defineProps, defineEmits } from 'vue';
 
 const route = useRouter();
 
@@ -32,7 +31,6 @@ function handleNavigation(routeName){
                 <li @click="handleNavigation('/profile')" class="aside-menu__items__item">Historia</li>
             
                 <li @click="handleNavigation('/contact')" class="aside-menu__items__item">Contacto</li>
-    
             
         </ul>
     </aside>
@@ -44,12 +42,14 @@ function handleNavigation(routeName){
 
     position: fixed;
     top: -100px;
-    height: 200px;
-    background-color: rgb(24, 82, 81,0.6);
+    height: 260px;
+    background-color: rgb(24, 82, 81,0.9);
     width: 170px;
     transition: all 0.3s;
     padding-top: 10px;
-    
+    z-index: 7;
+    border-radius: 10px;
+
     &__items{
         list-style-type: none;
         display: grid;
